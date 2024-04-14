@@ -29,18 +29,7 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-app.MapGet("/love-htmx",
-    () => new RazorComponentResult<LoveHtmx>(new { Message = "I ❤️ ASP.NET Core" }));
-
-
-app.MapPost("/count",
-    (HtmxCounter.HtmxCounterState value) =>
-    {
-        value.Value++;
-        return new RazorComponentResult<HtmxCounter>(
-            new { State = value }
-        );
-    });
-
+app.MapGet("/search",
+    () => new RazorComponentResult<Search>());
 
 app.Run();
